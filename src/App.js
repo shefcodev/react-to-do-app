@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Tasks from './components/Tasks/Tasks';
 import NewTask from './components/NewTask/NewTask';
 
-function App() {
+const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [tasks, setTasks] = useState([]);
@@ -54,6 +54,6 @@ function App() {
       />
     </React.Fragment>
   );
-}
+};
 
 export default App;

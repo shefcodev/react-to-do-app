@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import classes from './TaskForm.module.css';
 
-const TaskForm = (props) => {
+const TaskForm = ({ onEnterTask, loading }) => {
   const taskInputRef = useRef();
 
   const submitHandler = (event) => {
@@ -11,14 +11,16 @@ const TaskForm = (props) => {
     const enteredValue = taskInputRef.current.value;
 
     if (enteredValue.trim().length > 0) {
-      props.onEnterTask(enteredValue);
+      onEnterTask(enteredValue);
     }
+
+    taskInputRef.current.value = '';
   };
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
       <input type='text' ref={taskInputRef} />
-      <button>{props.loading ? 'Sending...' : 'Add Task'}</button>
+      <button>{loading ? 'Sending...' : 'Add Task'}</button>
     </form>
   );
 };
